@@ -55,7 +55,11 @@ linewidth   = ft_getopt(varargin, 'linewidth',  0.5);
 tag         = ft_getopt(varargin, 'tag',        '');
 
 % color management
-if ischar(color), color = colorspec2rgb(color); end
+if ischar(color) && exist([color '.m'], 'file')
+  color = eval(color);
+elseif ischar(color) && ismember(color, htmlcolors)
+  color = htmlcolors(color);
+end
 
 if isempty(hlim) && isempty(vlim) && isempty(hpos) && isempty(vpos) && isempty(height) && isempty(width)
   % no scaling is needed, the input X and Y are already fine

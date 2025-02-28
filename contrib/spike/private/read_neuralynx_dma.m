@@ -101,7 +101,7 @@ end
 % that the file is from the 256 channel system with 8 boards that we have
 % in Nijmegen and verify the CRC
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-nboards    = 8;
+nboards    = 9;
 nchanboard = 32;
 blocksize  = nboards*nchanboard+18; % in 4 byte words
 fseek(fid, hdroffset, 'bof');
@@ -182,7 +182,7 @@ if needhdr
     % remember the ascii header from the file, it does not contain much usefull information
     hdr.orig       = orig;
   end
-  hdr.Fs           = 32556;                   % sampling frequency
+  hdr.Fs           = 32000;                   % sampling frequency
   hdr.nChans       = nboards*nchanboard;      % number of analog channels
   hdr.nSamples     = inf;                     % number of samples per trial
   hdr.nSamplesPre  = 0;                       % number of pre-trigger samples in each trial

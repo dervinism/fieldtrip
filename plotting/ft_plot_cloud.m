@@ -305,7 +305,11 @@ end
 
 % functional data scaling factors
 if ischar(cmap)
-  cmapsc = ft_colormap(cmap, 201); % an odd number
+  if strcmp(cmap, 'default')
+    cmapsc = get(0, 'DefaultFigureColormap');
+  else
+    cmapsc = feval(cmap, 201); % an odd number
+  end
 else
   cmapsc = cmap;
 end

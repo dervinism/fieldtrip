@@ -155,7 +155,7 @@ if exist(headerfile, 'file')
 else
   % construct the header from the hard-coded defaults
   hdr             = [];
-  hdr.Fs          = 32556;
+  hdr.Fs          = 32000;
   hdr.nChans      = 1;
   hdr.nSamples    = (filesize(filename)-8)/samplesize;
   hdr.nSamplesPre = 0;

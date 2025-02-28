@@ -389,7 +389,7 @@ if needhdr
     hdr.orig.dataset = orig;       % keep the header details
   else
     % some parts of the header have to be hardcoded, since the splitted dataset does not contain all header information
-    hdr.Fs           = 32556;     % sampling frequency
+    hdr.Fs           = 32000;     % sampling frequency
     hdr.nSamples     = [];        % see below
     hdr.nSamplesPre  = 0;         % number of pre-trigger samples in each trial
     hdr.nTrials      = 1;         % number of trials

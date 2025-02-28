@@ -1869,7 +1869,7 @@ switch headerformat
     % these are hardcoded, they contain an 8-byte header and int32 values for a single channel
     % FIXME this should be done similar as neuralynx_bin, i.e. move the hdr into the function
     hdr             = [];
-    hdr.Fs          = 32556;
+    hdr.Fs          = 32000;
     hdr.nChans      = 1;
     hdr.nSamples    = (filesize(filename)-8)/4;
     hdr.nSamplesPre = 1;

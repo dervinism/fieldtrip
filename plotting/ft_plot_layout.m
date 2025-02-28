@@ -103,7 +103,9 @@ mask    = istrue(mask);
 outline = istrue(outline);
 verbose = istrue(verbose);
 
-if ischar(pointcolor), pointcolor = colorspec2rgb(pointcolor); end
+if ischar(pointcolor) && exist([pointcolor '.m'], 'file')
+  pointcolor = eval(pointcolor);
+end
 
 if ~(point || box || label || mask || outline)
   % there is nothing to be plotted

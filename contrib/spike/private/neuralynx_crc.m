@@ -1,7 +1,11 @@
-function [ts] = timestamp_neuralynx(tsl, tsh)
+function crc = neuralynx_crc(dat, dim)
 
-% TIMESTAMP_NEURALYNX merge the low and high part of Neuralynx timestamps
-% into a single uint64 value
+% NEURALYNX_CRC computes a cyclic redundancy check
+%
+% Use as
+%   crc = neuralynx_crc(dat)
+%
+% Note that the CRC is computed along the first dimension.
 
 % Copyright (C) 2007, Robert Oostenveld
 %
@@ -23,20 +27,13 @@ function [ts] = timestamp_neuralynx(tsl, tsh)
 %
 % $Id$
 
-if ~isa(tsl, 'uint32') && ~isa(tsl, 'int32')
-  ft_error('invalid input');
-elseif ~isa(tsh, 'uint32') && ~isa(tsl, 'int32')
-  ft_error('invalid input');
+
+nchans   = size(dat,1);
+nsamples = size(dat,2);
+
+crc = zeros(1,nsamples,class(dat));
+
+for i=1:nchans
+  crc = bitxor(crc, dat(i,:));
 end
 
-% convert the 32 bit low and 32 bit high timestamp into a 64 bit integer
-%dum = zeros(2, length(tsh), 'uint32');
-if littleendian
-  dum(1,:) = tsl;
-  dum(2,:) = tsh;
-else
-  dum(1,:) = tsh;
-  dum(2,:) = tsl;
-end
-
-ts = typecast(dum(:), 'uint64');

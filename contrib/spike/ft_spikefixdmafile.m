@@ -63,7 +63,7 @@ catch
 end
 
 nchan     = cfg.numchans+18;
-fsample   = 32556;
+fsample   = 32000;
 hdroffset = 16384;
 count     = 0;
 

@@ -2163,9 +2163,9 @@ switch eventformat
       % read the events from the *.ttl file
       event = ft_read_event(eventfile);
       % convert the sample numbers from the dma or ttl file to the downsampled dataset
-      % assume that the *.ttl file is sampled at 32556Hz and is aligned with the rest of the data
+      % assume that the *.ttl file is sampled at 32000Hz and is aligned with the rest of the data
       for i=1:length(event)
-        event(i).sample = round((event(i).sample-1) * hdr.Fs/32556 + 1);
+        event(i).sample = round((event(i).sample-1) * hdr.Fs/32000 + 1);
       end
       % elseif hasnev
       % FIXME, do something here
